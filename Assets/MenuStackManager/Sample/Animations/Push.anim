@@ -12,47 +12,25 @@ AnimationClip:
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
   m_CompressedRotationCurves: []
-  m_PositionCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 1000, y: 0, z: 0}
+        outSlope: {x: 1000, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 1000, y: 0, z: 0}
+        inSlope: {x: 1000, y: 0, z: 0}
+        outSlope: {x: 1000, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: 
   m_ScaleCurves: []
-  m_FloatCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 1024
-        outSlope: 1024
-        tangentMode: 10
-      - time: 1
-        value: 1024
-        inSlope: 1024
-        outSlope: 1024
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: offset.x
-    path: AnchorMC
-    classID: 114
-    script: {fileID: 11500000, guid: 6b223ab045d4e8544b4e8a23f604b903, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: offset.y
-    path: AnchorMC
-    classID: 114
-    script: {fileID: 11500000, guid: 6b223ab045d4e8544b4e8a23f604b903, type: 3}
+  m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -82,20 +60,20 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 1024
-        outSlope: 1024
+        inSlope: 1000
+        outSlope: 1000
         tangentMode: 10
       - time: 1
-        value: 1024
-        inSlope: 1024
-        outSlope: 1024
+        value: 1000
+        inSlope: 1000
+        outSlope: 1000
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: offset.x
-    path: AnchorMC
-    classID: 114
-    script: {fileID: 11500000, guid: 6b223ab045d4e8544b4e8a23f604b903, type: 3}
+    attribute: m_LocalPosition.x
+    path: 
+    classID: 4
+    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -111,9 +89,28 @@ AnimationClip:
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: offset.y
-    path: AnchorMC
-    classID: 114
-    script: {fileID: 11500000, guid: 6b223ab045d4e8544b4e8a23f604b903, type: 3}
+    attribute: m_LocalPosition.y
+    path: 
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.z
+    path: 
+    classID: 4
+    script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events: []

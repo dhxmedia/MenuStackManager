@@ -83,13 +83,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 799620103}
   - 20: {fileID: 799620102}
-  - 114: {fileID: 799620101}
   - 124: {fileID: 799620100}
   - 92: {fileID: 799620099}
   - 81: {fileID: 799620098}
-  - 114: {fileID: 799620104}
   m_Layer: 0
-  m_Name: tk2dCamera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,18 +117,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 799620097}
   m_Enabled: 1
---- !u!114 &799620101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 2499f46d5f642324d829678cbbf9a1d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 799620097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60c017246963b14c9806a06670568b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!20 &799620102
 Camera:
   m_ObjectHideFlags: 0
@@ -172,18 +158,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!114 &799620104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 2499f46d5f642324d829678cbbf9a1d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 799620097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17dfb34e55e3441ca8d12eda396ce770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &870784670
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 870784670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1200543136, guid: 3f62d2da90269b644b0f1ed227156de9, type: 3}
+  m_Script: {fileID: 11500000, guid: d8c88ed9b729cf2419d701f08662e577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &870784674
@@ -229,7 +203,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 870784670}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0475be63af05dc44bba8fe1b9b464e7a, type: 3}
   m_Name: 
