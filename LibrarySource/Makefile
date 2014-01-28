@@ -1,5 +1,5 @@
 
-CSHARP_FILES = $(wildcard src/*.cs)
+CSHARP_FILES = $(wildcard ../Assets/MenuStackManager/Source/*.cs)
 CSHARP_DLL = bin/MenuStackManager.dll
 CSHARP_CC = gmcs
 
