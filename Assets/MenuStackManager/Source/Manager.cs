@@ -25,7 +25,11 @@ namespace MenuStackManager
 			GameObject newMenuObject = Instantiate(prefab) as GameObject;
 			newMenuObject.GetComponent<Layer>().RequestMenuPush += RequestPush;
 			newMenuObject.GetComponent<Layer>().RequestMenuPop += RequestPop;
-			newMenuObject.transform.parent = transform;
+			GameObject gObj = new GameObject();
+			gObj.transform.position = Vector3.zero;
+			gObj.transform.parent = transform;
+			gObj.name = "LayerParent";
+			newMenuObject.transform.parent = gObj.transform;
 			newMenuObject.name = newMenuObject.name.Remove(newMenuObject.name.Length-7,7); //get rid of (Clone) on the names
 			GameObject top = null;
 			GameObject bottom = null;
@@ -41,7 +45,7 @@ namespace MenuStackManager
 			
 			if(top != null)
 			{
-				top.transform.localPosition += new Vector3(0, 0, newMenuObject.GetComponent<Layer>().Bound.size.z);
+				transform.localPosition += new Vector3(0, 0, newMenuObject.GetComponent<Layer>().Bound.size.z);
 			}
 			
 			if(pushAction != null)
@@ -56,7 +60,7 @@ namespace MenuStackManager
 			
 			if(bottom != null)
 			{
-				//newMenuObject.transform.parent = bottom.transform;
+				gObj.transform.parent = bottom.transform;
 			}
 			
 			_requestingObjects.Remove(bottom);
@@ -114,7 +118,7 @@ namespace MenuStackManager
 				{
 					top = menuStack[0];
 					newBottom = menuStack[menuStack.Count - 1];
-					menuStack[0].transform.localPosition -= new Vector3(0, 0, bottom.GetComponent<Layer>().Bound.size.z);
+					transform.localPosition -= new Vector3(0, 0, bottom.GetComponent<Layer>().Bound.size.z);
 				}
 				
 				if(OnMenuPopped != null)
