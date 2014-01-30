@@ -62,5 +62,10 @@ namespace MenuStackManager
 				RequestMenuPop();
 			}
 		}
+
+		public virtual void Init(object data)
+		{
+
+		}
 	}
 }

@@ -4,12 +4,14 @@ namespace MenuStackManager
 {
 	public class StackActionAnimation : StackAction {
 		public Animator CurrentAnimator;
+			
+
 		override public IEnumerator Action(IEnumerator parent)
 		{
 			CurrentAnimator.SetTrigger(Type.ToString());
-
 			CurrentAnimator.Update(0);
 			CurrentAnimator.speed = 0;
+			CurrentAnimator.playbackTime = 0;
 
 			yield return StartCoroutine(base.Action (parent));
 		}		

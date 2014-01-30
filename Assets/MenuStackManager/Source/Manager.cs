@@ -23,6 +23,7 @@ namespace MenuStackManager
 		{
 			//_busy = true;
 			GameObject newMenuObject = Instantiate(prefab) as GameObject;
+			newMenuObject.GetComponent<Layer>().Init(data);
 			newMenuObject.GetComponent<Layer>().RequestMenuPush += RequestPush;
 			newMenuObject.GetComponent<Layer>().RequestMenuPop += RequestPop;
 			GameObject gObj = new GameObject();
