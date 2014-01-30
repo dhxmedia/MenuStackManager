@@ -45,7 +45,7 @@ namespace MenuStackManager
 			
 			if(top != null)
 			{
-				transform.localPosition += new Vector3(0, 0, newMenuObject.GetComponent<Layer>().Bound.size.z);
+				top.transform.parent.localPosition += new Vector3(0, 0, newMenuObject.GetComponent<Layer>().Bound.size.z);
 			}
 			
 			if(pushAction != null)
@@ -101,7 +101,7 @@ namespace MenuStackManager
 			{
 				GameObject bottom = menuStack[menuStack.Count - 1];
 				menuStack.RemoveAt(menuStack.Count - 1);
-				bottom.transform.parent = transform;
+				bottom.transform.parent.parent = transform;
 				
 				if(menuActionStack.Count > 0 && menuActionStack[menuActionStack.Count - 1] != null)
 					yield return bottom.GetComponent<Layer>().OnLayerDestroy(menuActionStack[menuActionStack.Count - 1].Action(null));
@@ -118,7 +118,7 @@ namespace MenuStackManager
 				{
 					top = menuStack[0];
 					newBottom = menuStack[menuStack.Count - 1];
-					transform.localPosition -= new Vector3(0, 0, bottom.GetComponent<Layer>().Bound.size.z);
+					top.transform.parent.localPosition -= new Vector3(0, 0, bottom.GetComponent<Layer>().Bound.size.z);
 				}
 				
 				if(OnMenuPopped != null)
@@ -126,7 +126,8 @@ namespace MenuStackManager
 					OnMenuPopped(bottom, top, newBottom);
 				}
 				_requestingObjects.Remove(bottom);
-				Destroy(bottom);
+				Destroy(bottom.transform.parent.gameObject);
+				//Destroy(bottom);
 				Resources.UnloadUnusedAssets() ;
 			}
 			_busy = false;
