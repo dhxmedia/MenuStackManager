@@ -26,20 +26,23 @@ namespace MenuStackManager
 
 			CurrentAnimator.Update(0);
 			CurrentAnimator.speed = 0;
+			Coroutine parentCoroutine = null;
 			if(Intro)
 			{
-				Coroutine introCoroutine = StartCoroutine(base.Action(parent));
+				parentCoroutine = StartCoroutine(base.Action(parent));
 				if(Blocking)
-					yield return introCoroutine;
+					yield return parentCoroutine;
 			}
-			CurrentAnimator.speed = 1;
-			CurrentAnimator.Update(0);
-			yield return new WaitForFixedUpdate();
 			
 			if(!Intro && !Blocking)
 			{
-				StartCoroutine(base.Action(parent));
+				parentCoroutine = StartCoroutine(base.Action(parent));
 			}
+
+			CurrentAnimator.speed = 1;
+			CurrentAnimator.Update(0);
+			yield return new WaitForFixedUpdate();
+
 
 			float start = CurrentAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 			float diff = (CurrentAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - start);
@@ -51,9 +54,11 @@ namespace MenuStackManager
 
 			if(!Intro && Blocking)
 			{
-				Coroutine outroCoroutine = StartCoroutine(base.Action(parent));
-				yield return outroCoroutine;
+				parentCoroutine = StartCoroutine(base.Action(parent));
 			}
+
+			if(parentCoroutine != null)
+				yield return parentCoroutine;
 			yield return 0;
 		}		
 

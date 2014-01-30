@@ -35,7 +35,7 @@ GameObject:
   - 114: {fileID: 11400026}
   - 114: {fileID: 11400024}
   m_Layer: 0
-  m_Name: PushPop-Blocking
+  m_Name: PushPop-NonBlocking-02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Layer: {fileID: 11400000}
   SampleButton: {fileID: 11400008}
-  Prefab: {fileID: 100002}
+  Prefab: {fileID: 100002, guid: 9149f27cbfa94ef47b24ea01bd232bc7, type: 2}
   PushAction: {fileID: 11400026}
   PopAction: {fileID: 11400024}
 --- !u!114 &11400004
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 0
-  Blocking: 1
+  Blocking: 0
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 1
-  Blocking: 1
+  Blocking: 0
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 3
-  Blocking: 1
+  Blocking: 0
 --- !u!114 &11400026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 2
-  Blocking: 1
+  Blocking: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
