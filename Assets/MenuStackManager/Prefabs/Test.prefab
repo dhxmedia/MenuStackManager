@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 0
+  Blocking: 1
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,6 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 1
+  Blocking: 1
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,6 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 3
+  Blocking: 1
 --- !u!114 &11400026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,6 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAnimator: {fileID: 9500000}
   Type: 2
+  Blocking: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

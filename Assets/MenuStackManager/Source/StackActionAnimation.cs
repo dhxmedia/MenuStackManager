@@ -19,7 +19,7 @@ namespace MenuStackManager
 			}
 		}
 		public TypeEnum Type;
-
+		public bool Blocking = true;
 		override public IEnumerator Action(IEnumerator parent)
 		{
 			CurrentAnimator.SetTrigger(Type.ToString());
@@ -27,11 +27,20 @@ namespace MenuStackManager
 			CurrentAnimator.Update(0);
 			CurrentAnimator.speed = 0;
 			if(Intro)
-				yield return StartCoroutine(base.Action(parent));
-
+			{
+				Coroutine introCoroutine = StartCoroutine(base.Action(parent));
+				if(Blocking)
+					yield return introCoroutine;
+			}
 			CurrentAnimator.speed = 1;
 			CurrentAnimator.Update(0);
 			yield return new WaitForFixedUpdate();
+			
+			if(!Intro && !Blocking)
+			{
+				StartCoroutine(base.Action(parent));
+			}
+
 			float start = CurrentAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 			float diff = (CurrentAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - start);
 			while(diff < 1.0f)
@@ -39,9 +48,12 @@ namespace MenuStackManager
 				diff = (CurrentAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - start);
 				yield return new WaitForFixedUpdate();
 			}
-			CurrentAnimator.StopPlayback();
-			if(!Intro)
-				yield return StartCoroutine(base.Action(parent));
+
+			if(!Intro && Blocking)
+			{
+				Coroutine outroCoroutine = StartCoroutine(base.Action(parent));
+				yield return outroCoroutine;
+			}
 			yield return 0;
 		}		
 

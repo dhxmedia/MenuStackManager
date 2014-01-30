@@ -45,7 +45,7 @@ namespace MenuStackManager
 			
 			if(top != null)
 			{
-				top.transform.parent.localPosition += new Vector3(0, 0, newMenuObject.GetComponent<Layer>().Bound.size.z);
+				top.transform.parent.localPosition += new Vector3(0, 0, newMenuObject.GetComponent<Layer>().Bound.size.z + 1);
 			}
 			
 			if(pushAction != null)
@@ -118,7 +118,7 @@ namespace MenuStackManager
 				{
 					top = menuStack[0];
 					newBottom = menuStack[menuStack.Count - 1];
-					top.transform.parent.localPosition -= new Vector3(0, 0, bottom.GetComponent<Layer>().Bound.size.z);
+					top.transform.parent.localPosition -= new Vector3(0, 0, bottom.GetComponent<Layer>().Bound.size.z + 1);
 				}
 				
 				if(OnMenuPopped != null)
