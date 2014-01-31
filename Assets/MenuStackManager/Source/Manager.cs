@@ -21,7 +21,6 @@ namespace MenuStackManager
 		
 		IEnumerator _PushMenu(GameObject prefab, StackAction pushAction, StackAction popAction, object data)
 		{
-			//_busy = true;
 			GameObject newMenuObject = Instantiate(prefab) as GameObject;
 			newMenuObject.GetComponent<Layer>().Init(data);
 			newMenuObject.GetComponent<Layer>().RequestMenuPush += RequestPush;
@@ -97,7 +96,6 @@ namespace MenuStackManager
 		
 		IEnumerator _PopMenu()
 		{
-			//_busy = true;
 			if(menuStack.Count > 0)
 			{
 				GameObject bottom = menuStack[menuStack.Count - 1];
@@ -127,8 +125,11 @@ namespace MenuStackManager
 					OnMenuPopped(bottom, top, newBottom);
 				}
 				_requestingObjects.Remove(bottom);
+				
+				bottom.GetComponent<Layer>().RequestMenuPush -= RequestPush;
+				bottom.GetComponent<Layer>().RequestMenuPop -= RequestPop;
+
 				Destroy(bottom.transform.parent.gameObject);
-				//Destroy(bottom);
 				Resources.UnloadUnusedAssets() ;
 			}
 			_busy = false;
@@ -159,13 +160,44 @@ namespace MenuStackManager
 		{
 			//clear stack
 			//call prefabs push
+			Clear();
+			PushMenu(prefab, null, null, null);
 		}
-		
+
+		void BusyClear(GameObject gObj01, GameObject gObj02, GameObject gObj03)
+		{
+			ResetMenus();
+			OnMenuPushed -= BusyClear;
+			OnMenuPopped -= BusyClear;
+		}
+
+		void ResetMenus()
+		{
+			print (menuStack.Count);
+
+			for(int i = menuStack.Count - 1; i >= 0 ; i--)
+			{
+				Destroy(menuStack[i].transform.parent.gameObject);
+			}
+			
+			menuStack.Clear();
+			_actions.Clear();
+			_requestingObjects.Clear();
+		}
+
 		// Clears menu stack
+		[ContextMenu("Manager.Clear")]
 		public void Clear()
 		{
 			//run activemenu's pop
 			//destory stack
+			ResetMenus();
+
+			if(_busy)
+			{
+				OnMenuPushed += BusyClear;
+				OnMenuPopped += BusyClear;
+			}
 		}
 		
 		void RequestPush(GameObject prefab, StackAction pushAction, StackAction popAction, object data)
