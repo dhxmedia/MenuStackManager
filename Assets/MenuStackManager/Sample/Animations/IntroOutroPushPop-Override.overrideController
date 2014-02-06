@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: IntroOutroPushPop-Override
+  m_Controller: {fileID: 9100000, guid: 94578352bab9fb54a9cb2e284297d042, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c906bfe6b51736849a39c96f53e128b9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3d140b0d5f17ee4468a9617c6201092b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7660e05ce7caad046b810a7422b0a7fa, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ac8fc97dabe20fc47a01c74be27d002d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2de8621a84465f641a40af11323927d9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ac8fc97dabe20fc47a01c74be27d002d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ccaa2956a4678294fb13d22c94e0d56f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e23f102b5a78a1c49b1505902412bde1, type: 2}
