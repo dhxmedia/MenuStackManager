@@ -28,10 +28,11 @@ namespace MenuStackManager
 			newMenuObject.GetComponent<Layer>().RequestMenuPush += RequestPush;
 			newMenuObject.GetComponent<Layer>().RequestMenuPop += RequestPop;
 			GameObject gObj = new GameObject();
-			gObj.transform.position = Vector3.zero;
 			gObj.transform.parent = transform;
+			gObj.transform.localPosition = Vector3.zero;
 			gObj.name = "LayerParent";
 			newMenuObject.transform.parent = gObj.transform;
+			newMenuObject.transform.localPosition = Vector3.zero;
 			newMenuObject.name = newMenuObject.name.Remove(newMenuObject.name.Length-7,7); //get rid of (Clone) on the names
 			GameObject top = null;
 			GameObject bottom = null;
