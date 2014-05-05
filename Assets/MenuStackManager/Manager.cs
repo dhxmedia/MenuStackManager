@@ -18,9 +18,7 @@ namespace MenuStackManager
 		public OnMenuPoppedDelegate OnMenuPopped {get; set;}
 		
 		bool _busy = false;
-
-		
-		HashSet<GameObject> _requestingObjects = new HashSet<GameObject>();
+	
 		Queue<IEnumerator> _actions = new Queue<IEnumerator>();
 		
 		IEnumerator _PushMenu(GameObject prefab, StackAction pushAction, StackAction popAction, object data)
@@ -34,6 +32,7 @@ namespace MenuStackManager
 			gObj.transform.localPosition = Vector3.zero;
 			gObj.name = "LayerParent";
 			newMenuObject.transform.parent = gObj.transform;
+			newMenuObject.transform.localPosition = Vector3.zero;
 			newMenuObject.name = newMenuObject.name.Remove(newMenuObject.name.Length-7,7); //get rid of (Clone) on the names
 			GameObject top = null;
 			GameObject bottom = null;
@@ -66,8 +65,7 @@ namespace MenuStackManager
 			{
 				gObj.transform.parent = bottom.transform;
 			}
-			
-			_requestingObjects.Remove(bottom);
+
 			_busy = false;
 			yield return 0;
 		}
@@ -85,11 +83,8 @@ namespace MenuStackManager
 			if(menuStack.Count > 0)
 			{
 				GameObject bottom = menuStack[menuStack.Count - 1];
-				if(_requestingObjects.Contains(bottom) == false)
-				{
-					_requestingObjects.Add(bottom);
-					_actions.Enqueue(this._PushMenu(prefab, pushAction, popAction, data));
-				}
+				_actions.Enqueue(this._PushMenu(prefab, pushAction, popAction, data));
+
 			}	
 			else
 			{
@@ -128,7 +123,6 @@ namespace MenuStackManager
 				{
 					OnMenuPopped(bottom, top, newBottom);
 				}
-				_requestingObjects.Remove(bottom);
 				
 				bottom.GetComponent<Layer>().RequestMenuPush -= RequestPush;
 				bottom.GetComponent<Layer>().RequestMenuPop -= RequestPop;
@@ -146,11 +140,7 @@ namespace MenuStackManager
 			if(menuStack.Count > 0)
 			{
 				GameObject bottom = menuStack[menuStack.Count - 1];
-				if(_requestingObjects.Contains(bottom) == false)
-				{
-					_requestingObjects.Add(bottom);
-					_actions.Enqueue(this._PopMenu());
-				}
+				_actions.Enqueue(this._PopMenu());
 			}	
 			else
 			{
@@ -186,7 +176,6 @@ namespace MenuStackManager
 			
 			menuStack.Clear();
 			_actions.Clear();
-			_requestingObjects.Clear();
 		}
 
 		// Clears menu stack
